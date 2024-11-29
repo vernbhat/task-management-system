@@ -75,7 +75,7 @@ Make sure you have the following installed:
    - Add the following environment variables to the `.env` file. Replace `<username>` and `<password>` with your MongoDB Atlas credentials:  
      ```plaintext
      MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/taskdb?retryWrites=true&w=majority
-     PORT=5000
+     PORT=5001
      ```  
 
 4. **Install Dependencies**:  
