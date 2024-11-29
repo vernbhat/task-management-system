@@ -1,23 +1,16 @@
-// const mongoose = require("mongoose");
-// const dotenv = require("dotenv");
-
-// dotenv.config();
-
-// mongoose
-// 	.connect(process.env.MONGO_URI, {
-// 		useNewUrlParser: true,
-// 		useUnifiedTopology: true,
-// 	})
-// 	.then(() => console.log("MongoDB connected successfully"))
-// 	.catch((err) => console.error("MongoDB connection error:", err));
-
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const taskRoutes = require("./routes/taskRoutes");
+const taskRoutes = require("./routes/TaskRoutes");
 const cors = require("cors");
 
-dotenv.config();
+dotenv.config({ path: "../.env" });
+
+if (!process.env.MONGO_URI) {
+	console.error("MONGO_URI is not defined in environment variables");
+	process.exit(1);
+}
+
 const app = express();
 const PORT = process.env.PORT || 5001;
 
