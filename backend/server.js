@@ -1,8 +1,8 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const taskRoutes = require("./routes/TaskRoutes");
 const cors = require("cors");
+const connectDB = require("./config/db");
 
 dotenv.config({ path: "../.env" });
 
@@ -18,12 +18,6 @@ app.use(cors());
 app.use(express.json());
 app.use("/api", taskRoutes);
 
-mongoose
-	.connect(process.env.MONGO_URI, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-	})
-	.then(() => console.log("MongoDB connected"))
-	.catch((err) => console.error("MongoDB connection error:", err));
+connectDB();
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
